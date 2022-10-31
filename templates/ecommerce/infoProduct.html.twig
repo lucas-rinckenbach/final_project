@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black">
+    {{include("ecommerce/header.html.twig")}}
+    <div class=" flex flex-col  justify-center items-center bg-black w-screen h-screen bg-fixed bg-center bg-cover" style='background-image :url("{{car.getImage2}}")'>
+    <h1 class="text-white text-4xl font-bold">{{car.getModel}}</h1>
+    <div class=" m-8 flex border text-white">
+
+    <div class="border  px-10 flex flex-col  justify-center items-center ">
+        <div class="p-2"> Prix </div>
+            <p class="p-5">{{car.getPrice}} € <p>
+    </div>
+
+    <div class="border px-10 flex flex-col  justify-center items-center">
+        <div class="p-2"> Puissance </div>
+            <p class="p-5">{{car.getPuissance}} ch<p>
+    </div>
+
+    <div class="border px-10 flex flex-col  justify-center items-center ">
+        <div class="p-2 "> Vitesse max
+            </div>
+            <p class="p-5">{{car.getTopspeed}} km/h <p>
+    </div>
+    <div class="border px-10 flex flex-col  justify-center items-center ">
+        <div class="p-2 "> 0 à 100 km/h
+            </div>
+            <p class="p-5">{{car.getAccel}} s <p>
+    </div>
+    
+
+      
+        
+    </div>
+    </div>
+    {% for element in cars %}
+        {% if element.getBrand == car.getBrand and element.getId != car.getId %}
+            <h1 class="text-white font-bold text-2xl text-center w-screen my-10">Autres modéles de la marque </h1>
+            <a class="m-5" href="http://127.0.0.1:8000/Cars/{{element.getId}}"> 
+                <div class=" rounded mx-auto flex flex-col  justify-center items-center bg-black h-96 w-1/2 bg-center bg-cover" style='background-image :url("{{element.getImage}}")'>
+            
+                    <h1 class="text-white m-1 font-bold text-2xl">{{element.getBrand}}</h1>
+                    <h2 class="text-white">{{element.getModel}}</h2>
+            
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

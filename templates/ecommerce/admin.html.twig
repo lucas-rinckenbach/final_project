@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+    
+</head>
+ {{include("ecommerce/headerlogout.html.twig")}}
+
+<body class ="bg-black">
+
+<a href="http://127.0.0.1:8000/task/new" class="border p-2 m-2 rounded-lg text-white hover:bg-white hover:text-black">ajouter</a>
+
+{% for car in cars %}
+<div class=" text-white grid border m-2 grid-cols-5 gap-4 text-black ">
+<img class="text-white m-2 rounded" src="{{car.getImage}}">
+<img class="text-white m-2 mx-5 rounded" src="{{car.getImage2}}">
+<h1 class="text-white m-4 mx-10"> Brand = {{car.getBrand}}</h1>
+<h1 class="text-white  "> Model = {{car.getModel}}</h1>
+<p class="text-white  "> Price = {{car.getPrice}}</p>
+<p class="text-white  "> TopSpeed = {{car.getTopspeed}}</p>
+<p class="text-white  "> Puissance = {{car.getPuissance}}</p>
+<p class="text-white  "> Description = {{car.GetDescription}}</p>
+<a href="http://127.0.0.1:8000/Cars/{{car.getId}}/delete" class=" border p-2 m-5 w-min h-min rounded-lg text-white hover:bg-white hover:text-black">delete</a>
+
+
+<a class="border p-2 m-5 w-min h-min rounded-lg text-white hover:bg-white hover:text-black" href="http://127.0.0.1:8000/modif/{{car.getId}}">Modifier</a>
+
+</div>
+{% endfor %}
+
+
+</body>
+</html>
+

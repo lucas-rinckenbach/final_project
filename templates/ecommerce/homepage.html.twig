@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+   
+ 
+    
+</head>
+<body class="bg-black">
+    {{include("ecommerce/header.html.twig")}}
+<ul>
+{% for car in car %}
+
+<div class=" flex flex-wrap-reverse justify-center items-center bg-black w-screen h-screen bg-fixed bg-center bg-cover" style='background-image :url("{{car.getImage}}")'>
+  <h1 class="text-white text-4xl font-bold">{{car.getModel}}</h1>
+
+ 
+</div>
+<div class=" p-10 flex flex-wrap items-center justify-center w-full">
+
+  <p class="m-10 text-white  p-4 rounded  ">{{car.GetDescription}}</p>
+   <a href="{{path('app_affiche', { slug: car.getId}) }}" class="border rounded p-3 hover:opacity-50 text-white">En savoir plus </a>
+
+</div>
+
+{% endfor %}
+
+</ul>
+</body>
+</html>
